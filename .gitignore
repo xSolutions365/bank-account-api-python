@@ -1,6 +1,9 @@
 # Monorepo - Ignore compiled output and dependencies
-/bank-account-api/dist
-/bank-account-api/node_modules
+/bank-account-api-py/.pytest_cache
+/bank-account-api-py/.coverage
+/bank-account-api-py/htmlcov
+/bank-account-api-py/__pycache__
+/bank-account-api-py/.venv
 /bank-account-ui/node_modules
 /bank-account-ui/build
 
@@ -53,8 +56,18 @@ pids
 *.seed
 *.pid.lock
 
-# Diagnostic reports (https://nodejs.org/api/report.html)
-report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+# Python-specific
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.pytest_cache/
+.coverage
+htmlcov/
+.venv
+venv/
+ENV/
 
 # Front-end specific ignores
 /bank-account-ui/.next/ # Next.js (if applicable)
@@ -66,7 +79,6 @@ report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 /bank-account-ui/.eslintcache
 
 # Ignore TypeScript build artifacts
-/bank-account-api/tsconfig.tsbuildinfo
 /bank-account-ui/tsconfig.tsbuildinfo
 
 # Ignore lock files (only if using Yarn workspaces)

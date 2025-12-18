@@ -4,10 +4,10 @@ This solution contains a simple Bank Account MVC project with a REST API back-en
 
 ## Project Overview
 
-### Bank Account API
-- **bank-account.controller.ts**: Contains the `BankAccountController` which handles HTTP requests related to bank accounts.
-- **bank-account.model.ts**: Defines the `BankAccount` class representing a bank account with properties like `Id`, `AccountNumber`, `AccountHolderName`, and `Balance`.
-- **bank-account.service.ts**: Implements the `BankAccountService` class that provides business logic for managing bank accounts.
+### Bank Account API (Python)
+- **bank_account/controller.py**: Contains the bank account router which handles HTTP requests related to bank accounts.
+- **bank_account/model.py**: Defines the `BankAccount` class representing a bank account with properties like `id`, `account_number`, `account_holder_name`, and `balance`.
+- **bank_account/service.py**: Implements the `BankAccountService` class that provides business logic for managing bank accounts.
 
 ### **Bank Account UI**
 The **Bank Account UI** is a React-based front-end application built with Vite that provides a user-friendly interface to interact with the API.
@@ -19,10 +19,10 @@ The **Bank Account UI** is a React-based front-end application built with Vite t
 - **`pages/BankAccountsPage.tsx`**: Main page that renders the `BankAccountTable` and integrates layout components.
 
 ### Tests
-- **bank-account.controller.spec.ts**: Contains unit tests for the `BankAccountController` to ensure correct handling of HTTP requests.
-- **bank-account.service.spec.ts**: Contains unit tests for the `BankAccountService` to verify business logic and data manipulation.
-- **bank-account.model.spec.ts**: Contains unit tests for the `BankAccount` model to verify the correctness of its methods.
-- **bank-account.e2e-spec.ts**: Contains end-to-end tests to verify the complete workflow of the application.
+- **test_bank_account_controller.py**: Contains unit tests for the bank account controller to ensure correct handling of HTTP requests.
+- **test_bank_account_service.py**: Contains unit tests for the `BankAccountService` to verify business logic and data manipulation.
+- **test_bank_account_model.py**: Contains unit tests for the `BankAccount` model to verify the correctness of its methods.
+- **test_bank_account_e2e.py**: Contains end-to-end tests to verify the complete workflow of the application.
 
 ## Setup Instructions
 
@@ -34,17 +34,21 @@ The **Bank Account UI** is a React-based front-end application built with Vite t
 
 1. Navigate to the project directory:
    ```sh
-   cd bank-account-api
+   cd bank-account-api-py
    ```
 
 2. Install the dependencies:
    ```sh
-   npm install
+   pip install -r requirements.txt
+   # Or using Poetry (recommended)
+   poetry install
    ```
 
 3. Run the API:
    ```sh
-   npm run start
+   uvicorn app.main:app --reload --port 3000
+   # Or using Poetry
+   poetry run uvicorn app.main:app --reload --port 3000
    ```
 
 4. Open the browser and navigate to:
@@ -85,27 +89,31 @@ To run the tests in this project, follow these steps:
 
 1. Open a terminal and navigate to the API directory.
    ```sh
-   cd bank-account-api
+   cd bank-account-api-py
    ```
-2. Run the following command to execute the unit tests:
+2. Run the following command to execute all tests:
    ```sh
-   npm run test
+   pytest
    ```
-3. Run the following command to execute the end-to-end tests:
+3. Run the following command to execute the unit tests only:
    ```sh
-   npm run test:e2e
+   pytest tests/unit
    ```
-4. Run the following command to execute all tests:
+4. Run the following command to execute the end-to-end tests only:
    ```sh
-   npm run test:all
+   pytest tests/e2e
+   ```
+5. Run tests with coverage:
+   ```sh
+   pytest --cov=app --cov-report=html
    ```
 
 ### Frontend Tests
 
 1. Make sure the API is running:
    ```sh
-   cd bank-account-api
-   npm run start
+   cd bank-account-api-py
+   uvicorn app.main:app --reload --port 3000
    ```
 
 2. In a separate terminal, start the UI application:
@@ -148,31 +156,43 @@ After completing these steps, try running the UI tests again: `npm run test:ui`.
 
 ## Dependencies
 
-This project may require the following npm packages for testing:
-
 ### Backend Dependencies
-- `jest`: A delightful JavaScript Testing Framework with a focus on simplicity.
-- `@nestjs/testing`: Utilities for testing NestJS applications.
-- `supertest`: A library for testing HTTP servers.
-cd /Users/thalitavergilio/NodeProjects/bank-account-api/bank-account-ui
-npm run test:uicd /Users/thalitavergilio/NodeProjects/bank-account-api/bank-account-ui
-npm run test:ui
+- `fastapi`: Modern, fast web framework for building APIs with Python.
+- `uvicorn`: ASGI server implementation for Python.
+- `pytest`: Testing framework for Python applications.
+- `pytest-asyncio`: Plugin for testing asyncio code with pytest.
+- `httpx`: HTTP client library for Python, used for testing.
+
+To install backend dependencies:
+```sh
+cd bank-account-api-py
+pip install -r requirements.txt
+# Or using Poetry (recommended)
+poetry install
+```
+
 ### Frontend Dependencies
 - `React`: A declarative JavaScript library for building user interfaces.
 - `TypeScript`: Strongly-typed JavaScript for maintainable code.
 
-To install all dependencies, run:
+To install frontend dependencies:
 ```sh
-   npm install
+cd bank-account-ui
+npm install
 ```
 
 ## Technologies Used
-- Node.js
-- NestJS
-- TypeScript
-- Jest (for testing)
-- Supertest (for HTTP assertions)
+
+### Backend
+- Python 3.9+
+- FastAPI
+- Uvicorn
+- pytest (for testing)
+- httpx (for HTTP testing)
+
+### Frontend
 - React (with Vite)
+- TypeScript
 
 ## Contributing
 Feel free to submit issues or pull requests for improvements or bug fixes.
