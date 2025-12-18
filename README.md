@@ -28,7 +28,7 @@ The **Bank Account UI** is a React-based front-end application built with Vite t
 
 1. Clone the repository:
    ```sh
-   git clone <repository-url>
+   git clone https://github.com/xSolutions365/bank-account-api-python
    ```
 ### Running the API
 
