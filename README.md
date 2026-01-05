@@ -24,6 +24,18 @@ The **Bank Account UI** is a React-based front-end application built with Vite t
 - **test_bank_account_model.py**: Contains unit tests for the `BankAccount` model to verify the correctness of its methods.
 - **test_bank_account_e2e.py**: Contains end-to-end tests to verify the complete workflow of the application.
 
+## Prerequisites
+
+Before setting up this project, ensure you have the following installed:
+
+- **Python 3.9+**: Required for the backend API
+- **pip**: Python package manager (usually comes with Python)
+- **Node.js 18+** and **npm**: Required for the frontend UI
+- **Chrome browser**: Required for running UI tests (with matching ChromeDriver version)
+
+Optional but recommended:
+- **Poetry**: Modern Python dependency management tool
+
 ## Setup Instructions
 
 1. Clone the repository:
@@ -156,20 +168,31 @@ After completing these steps, try running the UI tests again: `npm run test:ui`.
 - `fastapi`: Modern, fast web framework for building APIs with Python.
 - `uvicorn`: ASGI server implementation for Python.
 - `pytest`: Testing framework for Python applications.
+- `pytest-cov`: Code coverage plugin for pytest.
 - `pytest-asyncio`: Plugin for testing asyncio code with pytest.
 - `httpx`: HTTP client library for Python, used for testing.
+- `black`: Code formatter for Python.
+- `flake8`: Linting tool for Python code.
+- `mypy`: Static type checker for Python.
 
 To install backend dependencies:
 ```sh
 cd bank-account-api-py
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 # Or using Poetry (recommended)
 poetry install
 ```
 
 ### Frontend Dependencies
-- `React`: A declarative JavaScript library for building user interfaces.
-- `TypeScript`: Strongly-typed JavaScript for maintainable code.
+- `react`: Declarative JavaScript library for building user interfaces.
+- `react-dom`: React package for working with the DOM.
+- `axios`: Promise-based HTTP client for API calls.
+- `@mui/material`: Material-UI component library.
+- `typescript`: Strongly-typed JavaScript for maintainable code.
+- `vite`: Fast build tool and development server.
+- `mocha`: Test framework for UI tests.
+- `selenium-webdriver`: Browser automation for end-to-end testing.
+- `chromedriver`: Chrome browser driver for Selenium tests.
 
 To install frontend dependencies:
 ```sh
@@ -182,13 +205,19 @@ npm install
 ### Backend
 - Python 3.9+
 - FastAPI
-- Uvicorn
-- pytest (for testing)
+- Uvicorn (ASGI server)
+- pytest (for unit and E2E testing)
+- pytest-cov (for code coverage)
 - httpx (for HTTP testing)
+- black, flake8, mypy (for code quality)
 
 ### Frontend
-- React (with Vite)
+- React 19
 - TypeScript
+- Vite (build tool and dev server)
+- Material-UI (MUI)
+- Axios (HTTP client)
+- Mocha + Selenium WebDriver (for UI testing)
 
 ## Contributing
 Feel free to submit issues or pull requests for improvements or bug fixes.
